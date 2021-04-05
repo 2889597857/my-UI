@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <title>图片放大</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            margin: 60px auto;
+            position: relative;
+        }
+
+        .container .mask {
+            display: none;
+            width: 100px;
+            height: 100px;
+            cursor: move;
+            border-radius: 50%;
+            border: 1px solid black;
+            z-index: 2;
+            transform: scale(2);
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .big {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .big img,
+        .big {
+            width: 400px;
+            height: 400px;
+        }
+
+        .small {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="mask">
+            <img
+                class="small"
+                src="https://gd3.alicdn.com/imgextra/i1/0/T1gXCcFfVbXXXXXXXX_!!0-item_pic.jpg_400x400.jpg"
+            >
+        </div>
+        <div class="big">
+            <img src="https://gd3.alicdn.com/imgextra/i1/0/T1gXCcFfVbXXXXXXXX_!!0-item_pic.jpg_400x400.jpg">
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+    const c = $('.container')
+    const m = $('.mask')
+    const g = $('.small')
+
+    c.on('mouseover', () => {
+        $('.mask').show()
+    })
+    c.on('mouseout', () => {
+        $('.mask').hide()
+    })
+    c.on('mousemove', (e) => {
+        let x = e.pageX - c[0].offsetLeft - m[0].offsetWidth / 2
+        let y = e.pageY - c[0].offsetTop - m[0].offsetHeight / 2
+        if (x <= 0) {
+            x = 0
+        } else if (x >= c[0].offsetWidth - m[0].offsetWidth) {
+            x = c[0].offsetWidth - m[0].offsetWidth
+        }
+        if (y <= 0) {
+            y = 0
+        } else if (y >= c[0].offsetHeight - m[0].offsetHeight) {
+            y = c[0].offsetHeight - m[0].offsetHeight
+        }
+        m.css({ top: y, left: x })
+        g.css({ top: -  y, left: - x })
+
+    })
+
+
+</script>
+
+
+</html>
