@@ -1,22 +1,62 @@
 <template>
-  <!-- <Magnifier :imgUrl="state.url" />
-  <Stars :num="state.star" :disabled="state.disabled" @getStar="getStar" /> -->
-  <!-- <Select v-model="state.star" /> -->
-  {{ state.star }}
-
-  <Stars v-model="state.star" />
+  <I-form :rules="rules" :model="ruleForm" ref="Iform">
+    <I-form-item label="账号 : " prop="acc">
+      <I-input
+        type="text"
+        clearable
+        v-model="ruleForm.acc"
+        placeholder="请输入账号"
+      />
+    </I-form-item>
+    <I-form-item label="密码 : " prop="psw">
+      <I-input
+        type="password"
+        placeholder="请输入密码"
+        clearable
+        v-model="ruleForm.psw"
+      />
+    </I-form-item>
+    <I-button @click="submitForm">登录</I-button>
+  </I-form>
 </template>
 
-<script setup>
-  import { reactive } from "vue";
-  const state = reactive({
-    star: 3,
-    disabled: true,
-    url: 'https://gd3.alicdn.com/imgextra/i1/0/T1gXCcFfVbXXXXXXXX_!!0-item_pic.jpg_400x400.jpg'
-  })
-  const getStar = num => {
-    console.log(num.value)
+<script>
+  import { reactive, ref, toRefs } from "vue";
+  export default {
+    setup () {
+      const state = reactive({
+        ruleForm: {
+          acc: '',
+          psw: '',
+          age: ''
+        },
+        rules: {
+          acc: [
+            { required: true, message: '请输入账号', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          psw: [
+            { required: true, message: '请输入密码', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+        }
+
+      })
+      const Iform = ref(null)
+      const submitForm = () => {
+        Iform.value.validate(a => {
+          if (a) {
+            alert('登录成功')
+          }
+        })
+      }
+      return {
+        ...toRefs(state),
+        Iform, submitForm
+      }
+    }
   }
+
 </script>
 
 <style>
