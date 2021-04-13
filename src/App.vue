@@ -1,22 +1,11 @@
 <template>
-  <i-tabs>
-    <i-tab-pane label="用户管理" name="first">用户管理</i-tab-pane>
-    <i-tab-pane label="配置管理" name="second">配置管理</i-tab-pane>
-    <i-tab-pane label="角色管理" name="third">角色管理</i-tab-pane>
-    <i-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</i-tab-pane>
-  </i-tabs>
+  <carouselDemo />
 </template>
 
-<script>   
-  import { ref } from 'vue'
-  export default {
-    setup () {
-      const activeName = ref('second')
-      return {
-        activeName
-      }
-    }
-  }
+<script setup>   
+  import tabsDemo from './lib/myUI/components/tabs/demo.vue'
+  import formsDemo from './lib/myUI/components/Form/demo.vue'
+  import carouselDemo from './lib//myUI/components/carousel/demo.vue'
 </script>
 
 <style>

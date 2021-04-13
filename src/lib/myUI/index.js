@@ -7,6 +7,8 @@ import IButton from './components/button/index.vue';
 import IForm from './components/Form/index.vue';
 import ITabs from './components/tabs/index.vue';
 import ITabPan from './components/tabpan/index.vue';
+import ICarousel from './components/carousel/index.vue';
+import ICarouselItem from './components/carousel/carouselItem.vue';
 
 let myUI = {}
 myUI.install = Vue => {
@@ -19,5 +21,7 @@ myUI.install = Vue => {
     Vue.component(IButton.name, IButton)
     Vue.component(ITabs.name, ITabs)
     Vue.component(ITabPan.name, ITabPan)
+    Vue.component(ICarousel.name, ICarousel)
+    Vue.component(ICarouselItem.name, ICarouselItem)
 }
 export default myUI

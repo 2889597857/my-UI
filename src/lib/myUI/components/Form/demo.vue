@@ -21,17 +21,18 @@
 </template>
 
 <script>
-  import Iform from './index'
+  import Iform from './index.vue'
   import IFormItem from '../formItem/index.vue'
-  import IButton from '../button'
+  import IInput from '../Input/index.vue'
+  import IButton from '../button/index.vue'
+  import { ref, toRefs, reactive } from 'vue'
   export default {
-    components: { Iform, IFormItem, IButton },
+    components: { Iform, IFormItem, IInput, IButton },
     setup () {
       const state = reactive({
         ruleForm: {
           acc: '',
           psw: '',
-          age: ''
         },
         rules: {
           acc: [
