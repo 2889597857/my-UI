@@ -19,9 +19,7 @@ function deepClone (params, _tar) {
 
 
 function copy (obj, map = new WeakMap()) {
-    if (map.get(obj)) {
-        return map.get(obj)
-    }
+    if (map.get(obj)) return map.get(obj)
     let res = obj instanceof Array ? [] : {}
     map.set(obj, res)
     for (const [k, v] of Object.entries(obj)) {

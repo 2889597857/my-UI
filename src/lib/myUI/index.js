@@ -5,6 +5,8 @@ import IInput from './components/Input/index.vue';
 import IFormItem from './components/formItem/index.vue';
 import IButton from './components/button/index.vue';
 import IForm from './components/Form/index.vue';
+import ITabs from './components/tabs/index.vue';
+import ITabPan from './components/tabpan/index.vue';
 
 let myUI = {}
 myUI.install = Vue => {
@@ -15,6 +17,7 @@ myUI.install = Vue => {
     Vue.component(IFormItem.name, IFormItem)
     Vue.component(IForm.name, IForm)
     Vue.component(IButton.name, IButton)
+    Vue.component(ITabs.name, ITabs)
+    Vue.component(ITabPan.name, ITabPan)
 }
-
 export default myUI

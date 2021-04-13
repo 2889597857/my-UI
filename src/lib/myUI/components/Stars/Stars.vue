@@ -26,7 +26,7 @@
         default: 0
       },
       modelValue: {
-        type: Number,
+        type: [String, Number],
       },
       size: {
         type: Number,
