@@ -1,17 +1,27 @@
 <template>
   <div :class="{ 'i-submenu': true, 'is-open': ShowSub }">
-    <div class="i-submenu-title" @click="isShow(index)">
+    <div
+      class="i-submenu-title"
+      :style="{ color: textColor }"
+      @click="isShow(index)"
+    >
       <slot name="title" />
       <i class="el-submenu-arrow iconfont icon-down"></i>
     </div>
-    <ul class="i-submenu-content" style="transition-property: height">
+
+    <ul
+      class="i-submenu-content"
+      style="transition-property: height"
+      ref="submenu"
+      v-show="ShowSub"
+    >
       <slot />
     </ul>
   </div>
 </template>
 
 <script>
-  import { reactive, toRefs, getCurrentInstance, onMounted } from 'vue'
+  import { reactive, toRefs, getCurrentInstance, onMounted, inject, ref } from 'vue'
   export default {
     name: "ISubmenu",
     props: {
@@ -20,27 +30,46 @@
       }
     },
     setup (props) {
+      const color = inject('color')
       const intance = getCurrentInstance()
       const state = reactive({
-        ShowSub: true
+        textColor: color.textColor,
       })
-
+      const submenu = ref(null)
+      let ShowSub = ref(false)
+      let size
       const isShow = () => {
-        state.ShowSub = !state.ShowSub
+        if (!ShowSub.value) {
+          ShowSub.value = true
+          submenu.value.style.height = 0
+          setTimeout(() => {
+            submenu.value.style.height = size + 'px'
+          }, 100);
+          // submenu.value.addEventListener('transitionend', dowm, false)
+        } else {
+          submenu.value.style.height = 0
+          submenu.value.addEventListener('transitionend', up, false)
+        }
+
+        function up () {
+          ShowSub.value = false
+          submenu.value.removeEventListener('transitionend', up, false)
+        }
       }
       onMounted(() => {
         const a = intance.parent.ctx.defaultAct
         if (a) {
           if (a == props.index) {
-            state.ShowSub = true
+            isShow()
           } else {
-            state.ShowSub = false
+            ShowSub.value = false
           }
         }
+        size = intance.slots.default().length * 56
       })
       return {
         ...toRefs(state),
-        isShow
+        isShow, submenu, ShowSub
       }
     }
   }
@@ -52,7 +81,6 @@
       height: 56px;
       line-height: 56px;
       font-size: 14px;
-      color: #fff;
       padding: 0 20px;
       list-style: none;
       cursor: pointer;
@@ -75,13 +103,8 @@
   }
 
   .i-submenu-content {
-    display: none;
-    transition: all 0.3s;
-    height: 0;
-    padding-left: 10px;
-  }
-  .is-open .i-submenu-content {
-    display: block;
-    height: auto;
+    transition: all 0.5s;
+    padding-left: 15px;
+    overflow: hidden;
   }
 </style>

@@ -4,6 +4,7 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      defaultActive="2"
     >
       <i-submenu index="1">
         <template #title>
@@ -11,6 +12,8 @@
         </template>
         <i-menu-item index="1-1">选项1</i-menu-item>
         <i-menu-item index="1-2">选项2</i-menu-item>
+        <i-menu-item index="1-3">选项3</i-menu-item>
+        <i-menu-item index="1-4">选项4</i-menu-item>
       </i-submenu>
       <i-submenu index="2">
         <template #title>
