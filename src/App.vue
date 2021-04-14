@@ -1,11 +1,12 @@
 <template>
-  <carouselDemo />
+  <menuDemo />
 </template>
 
 <script setup>   
   import tabsDemo from './lib/myUI/components/tabs/demo.vue'
   import formsDemo from './lib/myUI/components/Form/demo.vue'
-  import carouselDemo from './lib//myUI/components/carousel/demo.vue'
+  import carouselDemo from './lib/myUI/components/carousel/demo.vue'
+  import menuDemo from './lib/myUI/components/menu/demo.vue'
 </script>
 
 <style>

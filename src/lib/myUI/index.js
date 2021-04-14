@@ -10,6 +10,10 @@ import ITabPan from './components/tabpan/index.vue';
 import ICarousel from './components/carousel/index.vue';
 import ICarouselItem from './components/carousel/carouselItem.vue';
 
+import IMenu from './components/menu/index.vue';
+import ISubmenu from './components/menu/subMenu.vue';
+import IMenuItem from './components/menu/menuItem.vue';
+
 let myUI = {}
 myUI.install = Vue => {
     Vue.component(Magnifier.name, Magnifier)
@@ -23,5 +27,10 @@ myUI.install = Vue => {
     Vue.component(ITabPan.name, ITabPan)
     Vue.component(ICarousel.name, ICarousel)
     Vue.component(ICarouselItem.name, ICarouselItem)
+
+    Vue.component(IMenu.name, IMenu)
+    Vue.component(ISubmenu.name, ISubmenu)
+    Vue.component(IMenuItem.name, IMenuItem)
+
 }
 export default myUI
