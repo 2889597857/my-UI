@@ -8,7 +8,10 @@
       @input="onInput"
       @blur="onBlur"
     />
-    <span class="icon"><i class="iconfont"></i></span>
+    <span class="icon">
+      <i class="iconfont"></i>
+      <slot name="icon" />
+    </span>
   </div>
 </template>
 

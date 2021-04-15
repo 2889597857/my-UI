@@ -45,7 +45,7 @@
           setTimeout(() => {
             submenu.value.style.height = size + 'px'
           }, 100);
-          // submenu.value.addEventListener('transitionend', dowm, false)
+          // submenu.value.addEventListener('transitionend', dowm1, false)
         } else {
           submenu.value.style.height = 0
           submenu.value.addEventListener('transitionend', up, false)

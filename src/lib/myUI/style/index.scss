@@ -1,4 +1,4 @@
-@import url(//at.alicdn.com/t/font_2465798_fzgadu1gdp6.css);
+@import url(//at.alicdn.com/t/font_2465798_lqbf7mjm5e.css);
 ul,
 li {
 	list-style: none;
@@ -58,7 +58,7 @@ li {
 	border-radius: 4px;
 	font-size: 14px;
 	color: #606266;
-	padding: 0 10px;
+	padding: 0 20px 0 10px;
 	height: 35px;
 }
 
@@ -79,6 +79,7 @@ li {
 	color: #c0c4cc;
 	font-size: 14px;
 	cursor: pointer;
+	margin: 0 5px;
 }
 
 .I-button {
@@ -170,4 +171,51 @@ a {
 }
 .director-prev {
 	left: 0;
+}
+
+.i-calendar {
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+	width: 220px;
+	border-radius: 6px;
+	padding: 5px;
+}
+.i-calendar-title {
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	.title-right {
+		font-size: 12px;
+		span {
+			display: inline-block;
+			margin: 0 5px;
+			cursor: pointer;
+			&:hover {
+				color: #409eff;
+			}
+		}
+	}
+	> div {
+		width: 50%;
+	}
+}
+.i-calendar-content {
+	display: grid;
+	grid-template-columns: repeat(7, 30px);
+	grid-template-rows: repeat(7, 30px);
+	.i-day {
+		line-height: 30px;
+		cursor: pointer;
+		color: #606266;
+		border-radius: 50%;
+		&:hover {
+			background-color: RGB(179, 216, 255);
+			border-radius: 50%;
+		}
+	}
+	.notCurrentMonth {
+		color: #c0c4cc;
+	}
+	.today {
+		background-color: #409eff;
+	}
 }

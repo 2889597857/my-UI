@@ -1,5 +1,5 @@
 <template>
-  <menuDemo />
+  <datepickerDemo />
 </template>
 
 <script setup>   
@@ -7,6 +7,9 @@
   import formsDemo from './lib/myUI/components/Form/demo.vue'
   import carouselDemo from './lib/myUI/components/carousel/demo.vue'
   import menuDemo from './lib/myUI/components/menu/demo.vue'
+  import treeDemo from './lib/myUI/components/tree/demo.vue'
+  import calendarDemo from './lib/myUI/components/calendar/demo.vue'
+  import datepickerDemo from './lib/myUI/components/datepicker/demo.vue'
 </script>
 
 <style>
