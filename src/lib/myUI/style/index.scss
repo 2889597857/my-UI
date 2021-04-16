@@ -181,13 +181,15 @@ a {
 }
 .i-calendar-title {
 	height: 30px;
+	line-height: 30px;
 	display: flex;
 	justify-content: space-between;
 	.title-right {
-		font-size: 12px;
+		width: 60%;
+		font-size: 10px;
 		span {
 			display: inline-block;
-			margin: 0 5px;
+			margin: 0 3px;
 			cursor: pointer;
 			&:hover {
 				color: #409eff;

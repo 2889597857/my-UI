@@ -36,8 +36,7 @@
 
 <script>
   import { computedDay } from '../../hooks'
-  import { calendarTitle } from '../../data'
-  import { onMounted, reactive, toRefs } from 'vue'
+  import { onMounted, toRefs } from 'vue'
   export default {
     name: "ICalendar",
     props: {
@@ -47,68 +46,9 @@
       }
     },
     setup (props) {
-      const state = reactive({
-        CalendarList: [],
-        title: calendarTitle,
-        year: 0,
-        month: 0,
-        day: 0,
-      })
-      const { getYearMonthDay, monthCalendar } = computedDay(props.modelValue)
-      const getToday = thisDay => {
-        if (isCurrentMonth(thisDay)) {
-          state.day = thisDay.getDate()
-        } else {
-          mothList(thisDay)
-        }
-      }
-      const isCurrentMonth = thisDay => {
-        const { year, month } = getYearMonthDay(thisDay)
-        if (year == state.year && month == state.month) {
-          return true
-        } else {
-          return false
-        }
-      }
-      const isToday = thisDay => {
-        const { year, month, day } = getYearMonthDay(thisDay)
-        const { year: y, month: m, day: d } = getYearMonthDay(new Date())
-        if (year == y && month == m && day == d) {
-          return true
-        } else {
-          return false
-        }
-      }
-      const changeMoth = (value) => {
-        switch (value) {
-          case 'next':
-            var a = state.month + 1
-            if (a <= 11) {
-              mothList(new Date(state.year, a))
-            } else {
-              mothList(new Date(state.year + 1, 0))
-            }
-            break;
-          case 'prev':
-            var a = state.month - 1
-            if (a < 0) {
-              mothList(new Date(state.year - 1, 11))
-            } else {
-              mothList(new Date(state.year, a))
-            }
-            break;
-
-          default:
-            break;
-        }
-      }
-      function mothList (day) {
-        const a = getYearMonthDay(day)
-        state.year = a.year
-        state.month = a.month
-        state.day = a.day
-        state.CalendarList = monthCalendar(day)
-      }
+      const {
+        state, isCurrentMonth, getToday, isToday, changeMoth, mothList
+      } = computedDay()
       onMounted(() => {
         mothList(props.modelValue)
       })
