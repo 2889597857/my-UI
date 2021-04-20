@@ -1,7 +1,8 @@
 <template>
-  <datepickerDemo />
+  <!-- <datepickerDemo /> -->
   <!-- <calendarDemo /> -->
-  <!-- <selectorDemo /> -->
+  <selectorDemo />
+  <formsDemo />
 </template>
 
 <script setup>   

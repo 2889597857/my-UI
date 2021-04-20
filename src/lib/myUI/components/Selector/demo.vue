@@ -23,7 +23,6 @@
     label: '北京烤鸭'
   }])
   const value = ref('')
-
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,11 @@
 <template>
-  <selectot :placeholder="props.placeholder">
+  <selectot
+    ref="Iselectot"
+    v-model="inputValue"
+    :placeholder="props.placeholder"
+  >
     <ul class="selector-content">
-      <li v-for="item in options" :key="item">
+      <li v-for="item in options" :key="item" @click="clickLI(item)">
         <span>
           {{ item.label }}
         </span>
@@ -11,7 +15,7 @@
 </template>
 
 <script setup>
-  import { defineProps, toRefs } from 'vue'
+  import { defineProps, ref, toRefs } from 'vue'
   import selectot from './selectot.vue'
   const props = defineProps({
     options: {
@@ -25,7 +29,15 @@
       type: String
     }
   })
-  const { options } = toRefs(props)
+  const clickLI = (item) => {
+    inputValue.value = item.label
+    Iselectot.value.hideContent()
+  }
+  let inputValue = ref('')
+  const { options, value } = toRefs(props)
+  inputValue.value = value.value
+  const Iselectot = ref(null)
+
 </script>
 
 <style lang="scss" scoped>
