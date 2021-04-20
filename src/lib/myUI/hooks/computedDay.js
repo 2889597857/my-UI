@@ -5,7 +5,10 @@ export default function computedDay () {
         let year = date.getFullYear()
         let month = date.getMonth()
         let day = date.getDate()
-        return { year, month, day }
+        let hour = date.getHours()
+        let minute = date.getMinutes()
+        let seconds = date.getSeconds()
+        return { year, month, day, hour, minute, seconds }
     }
     function getDay (year, month, day) {
         return new Date(year, month, day)
@@ -45,9 +48,9 @@ export default function computedDay () {
             mothList(thisDay)
         }
     }
-    const isToday = thisDay => {
+    const isToday = (thisDay, nowDay = new Date()) => {
         const { year, month, day } = getYearMonthDay(thisDay)
-        const { year: y, month: m, day: d } = getYearMonthDay(new Date())
+        const { year: y, month: m, day: d } = getYearMonthDay(nowDay)
         if (year == y && month == m && day == d) {
             return true
         } else {
@@ -61,7 +64,21 @@ export default function computedDay () {
                 nowDate.setMonth(nowDate.getMonth() + 1)
                 break;
             case 'prev':
-                nowDate.setMonth(nowDate.getMonth() + 1)
+                nowDate.setMonth(nowDate.getMonth() - 1)
+                break;
+            default:
+                break;
+        }
+        mothList(nowDate)
+    }
+    const changeYear = (value) => {
+        let nowDate = getDay(state.year, state.month, 1)
+        switch (value) {
+            case 'next':
+                nowDate.setFullYear(nowDate.getFullYear() + 1)
+                break;
+            case 'prev':
+                nowDate.setFullYear(nowDate.getFullYear() - 1)
                 break;
             default:
                 break;
@@ -76,6 +93,6 @@ export default function computedDay () {
         state.CalendarList = monthCalendar(day)
     }
     return {
-        state, isCurrentMonth, getToday, isToday, changeMoth, mothList
+        state, isCurrentMonth, getToday, isToday, changeMoth, changeYear, mothList, getYearMonthDay
     }
 }

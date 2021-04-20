@@ -1,11 +1,11 @@
 <template>
-  <div class="Seletor-input">
-    <input type="text" class="input" :placeholder="placeholder" />
-    <span></span>
-  </div>
+  <i-input placeholder="请选择日期">
+    <template #icon><i class="iconfont icon-down"></i></template>
+  </i-input>
 </template>
 
 <script>
+  import IInput from '../Input/index.vue'
   export default {
     name: 'SelectorInput',
     props: {
@@ -13,19 +13,10 @@
         type: String,
         default: '请选择'
       }
-    }
+    },
+    components: { IInput }
   }
 </script>
 
 <style lang="scss" scoped>
-  input {
-    outline: none;
-    width: 100%;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    padding: 10px;
-    height: 40px;
-  }
-  .Seletor-input {
-  }
 </style>

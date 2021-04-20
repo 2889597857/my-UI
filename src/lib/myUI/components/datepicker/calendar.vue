@@ -1,13 +1,24 @@
 <template>
   <div class="i-calendar">
     <div class="i-calendar-title">
+      <div class="i-title-right">
+        <span @click="changeYear('prev')"
+          ><i class="iconfont icon-first"></i
+        ></span>
+        <span @click="changeMoth('prev')"
+          ><i class="iconfont icon-left"></i
+        ></span>
+      </div>
       <div>
         <span>{{ year }}年</span> <span>{{ month + 1 }}月</span>
       </div>
-      <div class="title-right">
-        <span @click="changeMoth('prev')">上个月</span>
-        <span @click="mothList(new Date())">今天</span>
-        <span @click="changeMoth('next')">下个月</span>
+      <div class="i-title-right">
+        <span @click="changeMoth('next')"
+          ><i class="iconfont icon-right"></i
+        ></span>
+        <span @click="changeYear('next')"
+          ><i class="iconfont icon-last"></i
+        ></span>
       </div>
     </div>
     <div class="i-calendar-content">
@@ -24,7 +35,7 @@
             notCurrentMonth: !isCurrentMonth(item),
           },
           {
-            today: isToday(item),
+            today: isToday(item, datepicker),
           },
         ]"
       >
@@ -36,7 +47,7 @@
 
 <script>
   import { computedDay } from '../../hooks'
-  import { onMounted, toRefs } from 'vue'
+  import { onMounted, ref, toRefs, watch } from 'vue'
   export default {
     name: "ICalendar",
     props: {
@@ -45,18 +56,38 @@
         default: () => new Date()
       }
     },
-    setup (props) {
+    emits: ['update:modelValue'],
+    setup (props, { emit }) {
       const {
-        state, isCurrentMonth, getToday, isToday, changeMoth, mothList
+        state, isCurrentMonth, changeMoth, mothList, isToday, changeYear
       } = computedDay()
+      const datepicker = ref()
+      const getToday = thisDay => {
+        datepicker.value = thisDay
+        emit('update:modelValue', thisDay)
+        mothList(thisDay)
+      }
       onMounted(() => {
         mothList(props.modelValue)
+        datepicker.value = new Date()
       })
       return {
         ...toRefs(state),
         getToday,
-        isCurrentMonth, isToday, mothList, changeMoth
+        isCurrentMonth, isToday, mothList, changeMoth, datepicker, changeYear
       }
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .i-title-right {
+    width: 25%;
+    span {
+      cursor: pointer;
+      &:hover {
+        color: #409eff;
+      }
+    }
+  }
+</style>

@@ -9,7 +9,7 @@
       @blur="onBlur"
     />
     <span class="icon">
-      <i class="iconfont"></i>
+      <i class="iconfont" style="display: none"></i>
       <slot name="icon" />
     </span>
   </div>
@@ -35,6 +35,7 @@
       })
       let FormItem
       const onBlur = () => {
+        emit('blur', prop.modelValue)
         if (FormItem) {
           FormItem.handleBlur(prop.modelValue)
         }

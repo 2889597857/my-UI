@@ -1,4 +1,4 @@
-@import url(//at.alicdn.com/t/font_2465798_lqbf7mjm5e.css);
+@import url(//at.alicdn.com/t/font_2465798_rw4g1hng9yk.css);
 ul,
 li {
 	list-style: none;
@@ -81,7 +81,9 @@ li {
 	cursor: pointer;
 	margin: 0 5px;
 }
-
+.rotate {
+	transform: rotate(180deg);
+}
 .I-button {
 	display: inline-block;
 	line-height: 1;
@@ -211,7 +213,6 @@ a {
 		border-radius: 50%;
 		&:hover {
 			background-color: RGB(179, 216, 255);
-			border-radius: 50%;
 		}
 	}
 	.notCurrentMonth {
@@ -219,5 +220,6 @@ a {
 	}
 	.today {
 		background-color: #409eff;
+		color: #fff;
 	}
 }

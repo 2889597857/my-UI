@@ -1,6 +1,7 @@
 <template>
   <datepickerDemo />
   <!-- <calendarDemo /> -->
+  <!-- <selectorDemo /> -->
 </template>
 
 <script setup>   
@@ -11,6 +12,7 @@
   import treeDemo from './lib/myUI/components/tree/demo.vue'
   import calendarDemo from './lib/myUI/components/calendar/demo.vue'
   import datepickerDemo from './lib/myUI/components/datepicker/demo.vue'
+  import selectorDemo from './lib/myUI/components/Selector/demo.vue'
 </script>
 
 <style>
