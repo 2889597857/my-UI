@@ -1,5 +1,11 @@
 <template>
-  <head> </head>
+  <header>
+    <p>模仿element ui 样式写的vue3 组件库</p>
+    <a href="https://github.com/2889597857/my-UI.git">源码：</a>
+    <a href="https://github.com/2889597857/my-UI.git"
+      >https://github.com/2889597857/my-UI.git</a
+    >
+  </header>
   <section>
     <aside>
       <menuDemo />
@@ -42,6 +48,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+    color: #2c3e50;
+  }
+  header {
+    margin-top: 30px;
+  }
+  header a {
     color: #2c3e50;
   }
   section {
