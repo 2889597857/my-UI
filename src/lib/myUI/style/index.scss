@@ -180,12 +180,15 @@ a {
 	width: 220px;
 	border-radius: 6px;
 	padding: 5px;
+	box-shadow: 0 4px 8px 0 rgb(7 17 27 / 10%);
 }
 .i-calendar-title {
-	height: 30px;
-	line-height: 30px;
+	height: 40px;
+	line-height: 40px;
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 1px solid #c0c4cc;
+	margin-bottom: 5px;
 	.title-right {
 		width: 60%;
 		font-size: 10px;

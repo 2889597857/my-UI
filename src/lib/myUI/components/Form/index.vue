@@ -25,9 +25,10 @@
       if (instance) {
         Object.assign(instance.proxy, {
           validate: (callback) => {
+
             Promise.all(
               a.filter(item => item.prop)
-                .map(item => item.func(props.rules[item.prop], props.model[a[0].prop]))
+                .map(item => item.func(props.rules[item.prop], props.model[item.prop]))
             ).then(() => {
               callback(true)
             }).catch(() => {
@@ -36,6 +37,7 @@
           }
         })
       }
+
       const addItem = ({ prop, func }) => {
         a.push({ prop, func })
       }
@@ -48,4 +50,8 @@
 </script>
 
 <style lang="scss" scoped>
+  .I-form {
+    width: 270px;
+    margin: 0 auto;
+  }
 </style>

@@ -1,19 +1,39 @@
 <template>
-  <!-- <datepickerDemo /> -->
-  <!-- <calendarDemo /> -->
-  <selectorDemo />
-  <formsDemo />
+  <head> </head>
+  <section>
+    <aside>
+      <menuDemo />
+    </aside>
+    <main>
+      <section>
+        <formsDemo />
+        <calendarDemo />
+        <selectorDemo />
+        <datepickerDemo />
+      </section>
+      <section>
+        <tabsDemo />
+        <carouselDemo />
+      </section>
+      <section>
+        <magnifierorDemo />
+      </section>
+      <section>
+        <starsDemo />
+      </section>
+    </main>
+  </section>
 </template>
-
 <script setup>   
   import tabsDemo from './lib/myUI/components/tabs/demo.vue'
   import formsDemo from './lib/myUI/components/Form/demo.vue'
   import carouselDemo from './lib/myUI/components/carousel/demo.vue'
   import menuDemo from './lib/myUI/components/menu/demo.vue'
-  import treeDemo from './lib/myUI/components/tree/demo.vue'
   import calendarDemo from './lib/myUI/components/calendar/demo.vue'
   import datepickerDemo from './lib/myUI/components/datepicker/demo.vue'
   import selectorDemo from './lib/myUI/components/Selector/demo.vue'
+  import magnifierorDemo from './lib/myUI/components/Magnifier/demo.vue'
+  import starsDemo from './lib/myUI/components/Stars/demo.vue'
 </script>
 
 <style>
@@ -23,8 +43,22 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    width: 40vw;
-    margin: 60px auto;
+  }
+  section {
+    display: flex;
+  }
+  aside {
+    height: 100vh;
+    background-color: rgb(84, 92, 100);
+  }
+  main {
+    padding: 40px;
+  }
+  main section {
+    display: flex;
+  }
+  main section > div {
+    margin: 10px;
   }
   * {
     padding: 0;

@@ -43,6 +43,6 @@
 
 <style lang="scss" scoped>
   .aside {
-    width: 400px;
+    width: 200px;
   }
 </style>

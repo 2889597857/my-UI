@@ -17,15 +17,14 @@
       const state = reactive({
         label: ctx.attrs.label
       })
-
       const errMsg = ref('')
       const rule = inject('rules')[props.prop]
       const addItem = inject('addItem')
       const handleChange = (value) => {
-        validate(getRules('change'), value)
+        validate(getRules('change'), value).catch(() => { })
       }
       const handleBlur = (value) => {
-        validate(getRules('blur'), value)
+        validate(getRules('blur'), value).catch(() => { })
       }
       provide('FormItem', { handleChange, handleBlur })
       const getRules = (trigger) => {

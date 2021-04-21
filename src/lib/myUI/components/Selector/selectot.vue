@@ -47,6 +47,7 @@
     background: #fff;
     border: 1px solid #e4e7ed;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    z-index: 100;
     &::before {
       content: " ";
       position: absolute;
