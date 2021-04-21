@@ -1,9 +1,10 @@
-import { reactive } from 'vue'
+import { reactive, provide, isRef, ref } from 'vue'
 export default function carousel (props) {
-    const state = reactive({
-        currentIndex: props.initial,
-        itemLen: 0
-    })
+    const currentIndex = ref('')
+    const itemLen = ref(0)
+    currentIndex.value = props.initial
+    provide('currentIndex', currentIndex)
+
     let time
     const autoPlay = () => {
         if (props.autoPlay) {
@@ -12,18 +13,19 @@ export default function carousel (props) {
             }, props.duration)
         }
     }
+
     const setIndex = (dir) => {
         switch (dir) {
             case 'next':
-                state.currentIndex += 1
-                if (state.currentIndex === state.itemLen) {
-                    state.currentIndex = 0
+                currentIndex.value += 1
+                if (currentIndex.value === itemLen.value) {
+                    currentIndex.value = 0
                 }
                 break;
             case 'prev':
-                state.currentIndex -= 1
-                if (state.currentIndex === -1) {
-                    state.currentIndex = state.itemLen - 1
+                currentIndex.value -= 1
+                if (currentIndex.value === -1) {
+                    currentIndex.value = itemLen.value - 1
                 }
             default:
                 break;
@@ -35,7 +37,7 @@ export default function carousel (props) {
     }
 
     const dotClick = index => {
-        state.currentIndex = index
+        currentIndex.value = index
     }
 
     const mouseleave = () => {
@@ -48,6 +50,6 @@ export default function carousel (props) {
         setIndex(dir)
     }
     return {
-        state, time, autoPlay, setIndex, stop, dotClick, mouseleave, mouseenter, dirClick
+        currentIndex, itemLen, time, autoPlay, setIndex, stop, dotClick, mouseleave, mouseenter, dirClick
     }
 }

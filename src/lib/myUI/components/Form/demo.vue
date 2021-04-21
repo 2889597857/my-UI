@@ -50,7 +50,6 @@
       })
       const Iform = ref(null)
       const submitForm = () => {
-        console.log(Iform.value);
         Iform.value.validate(a => {
           if (a) {
             alert('登录成功')

@@ -7,20 +7,18 @@
 </template>
 
 <script>
-  import { getCurrentInstance, reactive, toRefs, watch } from 'vue'
+  import { getCurrentInstance, inject, reactive, toRefs, watch } from 'vue'
   export default {
     name: "ICarouselItem",
     setup () {
       const intance = getCurrentInstance()
       const state = reactive({
         selfIndex: intance.vnode.key,
-        currentIndex: intance.parent.ctx.currentIndex
       })
-      watch(() => intance.parent.ctx.currentIndex, value => {
-        state.currentIndex = value
-      })
+      const currentIndex = inject('currentIndex')
+      watch(() => currentIndex.value, value => state.currentIndex = value)
       return {
-        ...toRefs(state)
+        ...toRefs(state), currentIndex
       }
     }
   }

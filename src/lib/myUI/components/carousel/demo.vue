@@ -15,6 +15,29 @@
   import img4 from '../../assets/4.jpg'
   import img5 from '../../assets/5.jpg'
 
+  export default {
+    name: "carouselDemo",
+    components: { carousel, carouselItem },
+    setup () {
+      const imgs = [
+        { imgUrl: img1 },
+        { imgUrl: img2 },
+        { imgUrl: img3 },
+        { imgUrl: img4 },
+        { imgUrl: img5 },
+      ]
+      return { imgs, }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .carousel {
+    width: 520px;
+    height: 280px;
+  }
+</style>
+
   // autoPlay: {
   //   type: Boolean,
   //   default: true
@@ -39,26 +62,3 @@
   //   type: Boolean,
   //   default: true
   // },
-
-  export default {
-    name: "carouselDemo",
-    components: { carousel, carouselItem },
-    setup () {
-      const imgs = [
-        { imgUrl: img1 },
-        { imgUrl: img2 },
-        { imgUrl: img3 },
-        { imgUrl: img4 },
-        { imgUrl: img5 },
-      ]
-      return { imgs }
-    }
-  }
-</script>
-
-<style lang="scss" scoped>
-  .carousel {
-    width: 520px;
-    height: 280px;
-  }
-</style>

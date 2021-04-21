@@ -10,13 +10,15 @@
       <dorDirector dir="next" @dirClick="dirClick" />
       <dorDirector dir="prev" @dirClick="dirClick" />
     </div>
-    <slot />
+    <div>
+      <slot />
+    </div>
   </div>
 </template>
 
 <script>
   import carousel from './carousel.js'
-  import { onBeforeUnmount, onMounted, toRefs, getCurrentInstance } from 'vue'
+  import { onBeforeUnmount, onMounted, toRefs, getCurrentInstance, provide, watch } from 'vue'
   import dorDirector from './director.vue'
   import dot from './dot.vue'
   export default {
@@ -48,18 +50,18 @@
         default: true
       },
     },
-    setup (props) {
+    setup (props, { slots }) {
       const intance = getCurrentInstance()
-      const { state, autoPlay, stop, dotClick, mouseleave, mouseenter, dirClick } = carousel(props)
+      const { currentIndex, itemLen, autoPlay, stop, dotClick, mouseleave, mouseenter, dirClick } = carousel(props)
       onMounted(() => {
-        state.itemLen = intance.slots.default()[0].children.length
+        itemLen.value = intance.slots.default()[0].children.length
         autoPlay()
       })
       onBeforeUnmount(() => {
         stop()
       })
       return {
-        ...toRefs(state), dotClick, mouseleave, mouseenter, dirClick
+        currentIndex, itemLen, dotClick, mouseleave, mouseenter, dirClick
       }
     }
 
